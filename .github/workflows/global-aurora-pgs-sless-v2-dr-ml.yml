@@ -1,0 +1,250 @@
+# ***************************************************************************************************************************************
+# *  global-aurora-pgs-sless-v2-dr-ml.yml                                                                                               *
+#  **************************************************************************************************************************************
+#  *                                                                                                                                    *
+#  * @License Starts                                                                                                                    *
+#  *                                                                                                                                    *
+#  * Copyright © 2023. MongoExpUser.  All Rights Reserved.                                                                              *
+#  *                                                                                                                                    *
+#  * License: MIT - https://github.com/MongoExpUser/Global-DB-Aurora-Postgres-Sless-V2-With-DR-and-ML-Capabilities/blob/main/LICENSE    *
+#  *                                                                                                                                    *
+#  * @License Ends                                                                                                                      *
+#  **************************************************************************************************************************************
+#  *                                                                                                                                    *
+#  *  The YAML file implements a Workflow for the deployment of a global Aurora Postgres Serverless v2 database cluster                 *
+#  *.  with Disaster Recovery (DR) and In-Database Machine Learning (ML) features                                                       *
+#  *                                                                                                                                    *
+#  **************************************************************************************************************************************
+
+
+# CI - Deploy AWS Global Aurora Postgress Serverless V2 (AuoraPsqlGlobalSless2)
+name: CI - TF Deploy AuoraPgsGlobalSless2
+
+# Option 1: Auto Workflow
+#on:
+  #push:
+  #  branches:
+  #  - main
+  # pull_request:
+  # matches pull request for all branches and tag names
+  
+# Option 2: Custom Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      Run Workflow:
+        description: 'Validated'
+        default: 'Yes'
+        required: true
+        options:
+        - 'Yes'
+        - 'No'
+      Tags:
+        description: 'Terraform-Aurora-Pgs-Sless2'
+        default: true
+        required: true
+        type: boolean
+      Environment:
+        description: 'Environment'
+        type: environment
+        required: true
+        default: Development
+        
+      
+jobs:
+
+  start:
+    name: Deploy-AuoraPgs-Sless-V2-Start
+    runs-on: ubuntu-latest
+    environment: Starting
+    env:
+      DEPLOY: 'yes'
+    defaults:
+      run:
+        shell: bash
+ 
+    steps:
+      - name: GH Actions Runner Set-up - Starting
+        uses: actions/checkout@v2
+        # note: checkout directory: /home/runner/work/${repo-name}/$${repo-name}
+        
+     #- name: Terraform Repo Security Scan Set-up
+     #  uses: triat/terraform-security-scan@v3
+      
+      - name: DEPLOY - Start
+        if:  (env.DEPLOY == 'yes')
+        run: |
+          pwd
+          echo Start of Deployment
+        
+
+  dev:
+    # if: ${{ always() }}
+    if: ${{ false }}  # disable job
+    needs: [start]
+    name: Deploy-AuoraPgs-Sless-V2-Dev
+    runs-on: ubuntu-latest
+    environment: Development
+    env:
+      # gen env variables
+      PLAN: 'no'
+      APPLY: 'no'
+      DESTROY: 'no'
+      DEPLOY: 'yes'
+      SDK_INIT_DIRECTORY: 'init'
+      BASE_DIRECTORY: '/home/runner/work'
+      REPO_NAME: ${{ github.event.repository.name }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ENVIRONMENT: ${{ inputs.environment }}
+      # aws credentials env variables
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      # aws network env variables
+      AWS_VPC_SECURITY_GROUP: ${{ secrets.AWS_VPC_SECURITY_GROUP }}
+      AWS_VPC_SUBNET_ID_ONE: ${{ secrets.AWS_VPC_SUBNET_ID_ONE }}
+      AWS_VPC_SUBNET_ID_TWO: ${{ secrets.AWS_VPC_SUBNET_ID_TWO }}
+      AWS_VPC_SUBNET_ID_THREE: ${{ secrets.AWS_VPC_SUBNET_ID_THREE }}
+    defaults:
+      run:
+        shell: bash
+ 
+    steps:
+    - name: GH Actions Runner Set-up - Development
+      uses: actions/checkout@v2
+      # note: checkout directory: /home/runner/work/${repo-name}/$${repo-name}
+      
+    - name: Terraform CLI Set-up
+      uses: hashicorp/setup-terraform@v1
+      
+    - name: Deploy - Dev
+      if:  (env.DEPLOY == 'yes') && (env.ENVIRONMENT == 'Development')
+      run: |
+        cat dev.auto.tfvars <<EOF
+        EOF
+        terraform init
+        terraform validate
+        if [[ env.PLAN = 'yes' ]]; then terraform plan -var-file=dev.auto.tfvars -auto-approve; fi
+        if [[ env.APPLY = 'yes' ]]; then terraform apply -var-file=dev.auto.tfvars -auto-approve; fi
+        if [[ env.DESTROY = 'yes' ]]; then terraform destroy -var-file=dev.auto.tfvars -auto-approve; fi
+        
+        
+  stag:
+    #if: ${{ always() }}
+    if: ${{ false }}  # disable job
+    needs: [start]
+    name: Deploy-AuoraPgs-Sless-V2-Stg
+    runs-on: ubuntu-latest
+    environment: Staging
+    env:
+      # gen env variables
+      DEPLOY: 'yes'
+      SDK_INIT_DIRECTORY: 'init'
+      BASE_DIRECTORY: '/home/runner/work'
+      REPO_NAME: ${{ github.event.repository.name }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ENVIRONMENT: ${{ inputs.environment }}
+      # aws credentials env variables
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      # aws network env variables
+      AWS_VPC_SECURITY_GROUP: ${{ secrets.AWS_VPC_SECURITY_GROUP }}
+      AWS_VPC_SUBNET_ID_ONE: ${{ secrets.AWS_VPC_SUBNET_ID_ONE }}
+      AWS_VPC_SUBNET_ID_TWO: ${{ secrets.AWS_VPC_SUBNET_ID_TWO }}
+      AWS_VPC_SUBNET_ID_THREE: ${{ secrets.AWS_VPC_SUBNET_ID_THREE }}
+    defaults:
+      run:
+        shell: bash
+ 
+    steps:
+    - name: GH Actions Runner Set-up - Staging
+      uses: actions/checkout@v2
+      # note: checkout directory: /home/runner/work/${repo-name}/$${repo-name}
+      
+    - name: Terraform CLI Set-up
+      uses: hashicorp/setup-terraform@v1
+      
+    - name: Deploy - Stg
+      if:  (env.DEPLOY == 'yes') && (env.ENVIRONMENT == 'Staging')
+      run: |
+        cat stg.auto.tfvars <<EOF
+        EOF
+        terraform init
+        terraform validate
+        if [[ env.PLAN = 'yes' ]]; then terraform plan -var-file=stg.auto.tfvars -auto-approve; fi
+        if [[ env.APPLY = 'yes' ]]; then terraform apply -var-file=stg.auto.tfvars -auto-approve; fi
+        if [[ env.DESTROY = 'yes' ]]; then terraform destroy -var-file=stg.auto.tfvars -auto-approve; fi
+        
+      
+  prod:
+    #if: ${{ always() }}
+    if: ${{ false }}  # disable job
+    needs: [start]
+    name: Deploy-AuoraPgs-Sless-V2-Prod
+    runs-on: ubuntu-latest
+    environment: Production
+    env:
+      # gen env variables
+      DEPLOY: 'yes'
+      SDK_INIT_DIRECTORY: 'init'
+      BASE_DIRECTORY: '/home/runner/work'
+      REPO_NAME: ${{ github.event.repository.name }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ENVIRONMENT: ${{ inputs.environment }}
+      # aws credentials env variables
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      # aws network env variables
+      AWS_VPC_SECURITY_GROUP: ${{ secrets.AWS_VPC_SECURITY_GROUP }}
+      AWS_VPC_SUBNET_ID_ONE: ${{ secrets.AWS_VPC_SUBNET_ID_ONE }}
+      AWS_VPC_SUBNET_ID_TWO: ${{ secrets.AWS_VPC_SUBNET_ID_TWO }}
+      AWS_VPC_SUBNET_ID_THREE: ${{ secrets.AWS_VPC_SUBNET_ID_THREE }}
+    defaults:
+      run:
+        shell: bash
+ 
+     steps:
+    - name: GH Actions Runner Set-up - Production
+      uses: actions/checkout@v2
+      # note: checkout directory: /home/runner/work/${repo-name}/$${repo-name}
+      
+    - name: Terraform CLI Set-up
+      uses: hashicorp/setup-terraform@v1
+      
+    - name: Deploy - Prod
+      if:  (env.DEPLOY == 'yes') && (env.ENVIRONMENT == 'Production')
+      run: |
+        cat prod.auto.tfvars <<EOF
+        EOF
+        terraform init
+        terraform validate
+        if [[ env.PLAN = 'yes' ]]; then terraform plan -var-file=prod.auto.tfvars -auto-approve; fi
+        if [[ env.APPLY = 'yes' ]]; then terraform apply -var-file=prod.auto.tfvars -auto-approve; fi
+        if [[ env.DESTROY = 'yes' ]]; then terraform destroy -var-file=prod.auto.tfvars -auto-approve; fi
+        
+        
+  end:
+    #if: ${{ always() }}
+    #if: ${{ false }}  # disable job
+    needs: [dev, stag, prod]
+    name: Deploy-AuoraPgs-Sless-V2-End
+    runs-on: ubuntu-latest
+    environment: Ending
+    env:
+      DEPLOY: 'yes'
+    defaults:
+      run:
+        shell: bash
+ 
+    steps:
+    - uses: actions/checkout@v2
+      # note: checkout directory: /home/runner/work/${repo-name}/$${repo-name}
+
+      
+    - name: Deploy - End
+      if:  (env.DEPLOY == 'yes')
+      run: |
+        pwd
+        echo End of Deployment
