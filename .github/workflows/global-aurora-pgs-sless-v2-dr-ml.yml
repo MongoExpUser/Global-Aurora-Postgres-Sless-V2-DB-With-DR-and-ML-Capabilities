@@ -44,11 +44,11 @@ on:
         default: true
         required: true
         type: boolean
-      Environment:
-        description: 'Environment'
-        type: environment
-        required: false
-        default: Development
+      #Environment:
+      #  description: 'Environment'
+      #  type: environment
+      #  required: false
+      #  default: Development
         
       
 jobs:
