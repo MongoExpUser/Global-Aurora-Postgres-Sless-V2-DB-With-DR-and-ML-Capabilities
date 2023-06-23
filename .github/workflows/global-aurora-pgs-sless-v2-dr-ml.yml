@@ -12,7 +12,7 @@
 #  **************************************************************************************************************************************
 #  *                                                                                                                                    *
 #  *  The YAML file implements a Workflow for the deployment of a global Aurora Postgres Serverless v2 database cluster                 *
-#  *.  with Disaster Recovery (DR) and In-Database Machine Learning (ML) features                                                       *
+#  *  with Disaster Recovery (DR) and In-Database Machine Learning (ML) features                                                        *
 #  *                                                                                                                                    *
 #  **************************************************************************************************************************************
 
