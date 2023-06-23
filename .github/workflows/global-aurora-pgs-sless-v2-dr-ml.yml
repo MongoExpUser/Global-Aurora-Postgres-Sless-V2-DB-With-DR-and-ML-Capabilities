@@ -90,7 +90,7 @@ jobs:
       PLAN: 'no'
       APPLY: 'no'
       DESTROY: 'no'
-      DEPLOY: 'yes'
+      DEPLOY: 'no'
       SDK_INIT_DIRECTORY: 'init'
       BASE_DIRECTORY: '/home/runner/work'
       REPO_NAME: ${{ github.event.repository.name }}
@@ -138,7 +138,10 @@ jobs:
     environment: Staging
     env:
       # gen env variables
-      DEPLOY: 'yes'
+      PLAN: 'no'
+      APPLY: 'no'
+      DESTROY: 'no'
+      DEPLOY: 'no'
       SDK_INIT_DIRECTORY: 'init'
       BASE_DIRECTORY: '/home/runner/work'
       REPO_NAME: ${{ github.event.repository.name }}
@@ -186,7 +189,10 @@ jobs:
     environment: Production
     env:
       # gen env variables
-      DEPLOY: 'yes'
+      PLAN: 'no'
+      APPLY: 'no'
+      DESTROY: 'no'
+      DEPLOY: 'no'
       SDK_INIT_DIRECTORY: 'init'
       BASE_DIRECTORY: '/home/runner/work'
       REPO_NAME: ${{ github.event.repository.name }}
