@@ -2,10 +2,10 @@
 
 ## Global-DB-Aurora-Postgres-Sless-V2-With-DR-and-ML-Capabilities
 
-## View of Global Database for Disaster Recovery
+## View of Global Database With Disaster Recovery Feature In Secondary Region
 ![Image description](https://github.com/MongoExpUser/Global-DB-Aurora-Postgres-Sless-V2-With-DR-and-ML-Capabilities/blob/main/global-db.png)
 
-## View of Global Database Integration with Machine Learning
+## View of Global Database Integration with Machine Learning Features
 ![Image description](https://github.com/MongoExpUser/Global-DB-Aurora-Postgres-Sless-V2-With-DR-and-ML-Capabilities/blob/main/ml-integration.png)
           
 ## Purpose
