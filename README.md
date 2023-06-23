@@ -12,7 +12,7 @@
 ## Advantage of Global Cluster
   * The global database ensures Cross-Region Disaster Recovery, hence:
     * If the primary (source) region suffers an outage, the secondary region cluster can be promoted to a stand alone primary cluster.
-    * The cluster can recover in "less than 1 minute" with an effective <strong>Recovery Point Objective (RPO) of 1 second</strong> and a <strong>Recovery Time Objective (RTO) of less than 1 minute.</strong>
+    * The cluster can recover in less than 1 minute with an effective <strong>Recovery Point Objective (RPO) of 1 second</strong> and a <strong>Recovery Time Objective (RTO) of less than 1 minute.</strong>
 
 ## Deployed Resources:
   * The following resources are deployed:
