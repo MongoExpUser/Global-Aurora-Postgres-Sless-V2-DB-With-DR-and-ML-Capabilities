@@ -1,7 +1,12 @@
 [![CI - TF Deploy AuoraPgsGlobalSless2](https://github.com/MongoExpUser/Global-DB-Aurora-Postgres-Sless-V2-With-DR-and-ML-Capabilities/actions/workflows/global-aurora-pgs-sless-v2-dr-ml.yml/badge.svg)](https://github.com/MongoExpUser/Global-DB-Aurora-Postgres-Sless-V2-With-DR-and-ML-Capabilities/actions/workflows/global-aurora-pgs-sless-v2-dr-ml.yml)
 
 ## Global-DB-Aurora-Postgres-Sless-V2-With-DR-and-ML-Capabilities
-  
+
+## View of Global Database for Disaster Recovery
+![Image description](https://github.com/MongoExpUser/Global-DB-Aurora-Postgres-Sless-V2-With-DR-and-ML-Capabilities/blob/main/global-db.png)
+
+## View of Global Database Integration with Machine Learning
+![Image description](https://github.com/MongoExpUser/Global-DB-Aurora-Postgres-Sless-V2-With-DR-and-ML-Capabilities/blob/main/ml-integration.png)
           
 ## Purpose
  * Deploy a Global Aurora Postgres Serverless V2 Database Cluster with Disaster Recovery (DR) and In-Database Machine Learning Capabilities
