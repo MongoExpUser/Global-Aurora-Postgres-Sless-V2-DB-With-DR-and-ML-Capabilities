@@ -2,7 +2,7 @@
   
           
 ## Purpose
- * Deploy a Global Auora Postgres Serverless V2 Database Cluster with In-Database Machine Learning and Disaster Recovery (DR) Capabilities
+ * Deploy a Global Auora Postgres Serverless V2 Database Cluster with Disaster Recovery (DR) and In-Database Machine Learning Capabilities
    Machine Learning Features include:
    * AWS Comprehend for Sentiment Analysis.
    * AWS SageMaker Machine with Linear Learner, Random Forest & Xboost algorithms features.
