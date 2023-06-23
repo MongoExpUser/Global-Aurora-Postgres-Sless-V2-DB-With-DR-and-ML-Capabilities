@@ -179,7 +179,7 @@ jobs:
       
   prod:
     #if: ${{ always() }}
-    #if: ${{ false }}  # disable job
+    if: ${{ false }}  # disable job
     needs: [start]
     name: Deploy-AuoraPgs-Sless-V2-Prod
     runs-on: ubuntu-latest
@@ -205,7 +205,7 @@ jobs:
       run:
         shell: bash
  
-     steps:
+    steps:
     - name: GH Actions Runner Set-up - Production
       uses: actions/checkout@v2
       # note: checkout directory: /home/runner/work/${repo-name}/$${repo-name}
