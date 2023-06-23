@@ -47,7 +47,7 @@ on:
       Environment:
         description: 'Environment'
         type: environment
-        required: true
+        required: false
         default: Development
         
       
