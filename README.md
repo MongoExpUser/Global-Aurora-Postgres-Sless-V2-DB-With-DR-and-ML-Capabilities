@@ -1,3 +1,5 @@
+[![CI - TF Deploy AuoraPgsGlobalSless2](https://github.com/MongoExpUser/Global-DB-Aurora-Postgres-Sless-V2-With-DR-and-ML-Capabilities/actions/workflows/global-aurora-pgs-sless-v2-dr-ml.yml/badge.svg)](https://github.com/MongoExpUser/Global-DB-Aurora-Postgres-Sless-V2-With-DR-and-ML-Capabilities/actions/workflows/global-aurora-pgs-sless-v2-dr-ml.yml)
+
 ## Global-DB-Aurora-Postgres-Sless-V2-With-DR-and-ML-Capabilities
   
           
