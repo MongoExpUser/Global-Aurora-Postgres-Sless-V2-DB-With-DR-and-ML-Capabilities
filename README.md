@@ -9,10 +9,10 @@
 ![Image description](https://github.com/MongoExpUser/Global-DB-Aurora-Postgres-Sless-V2-With-DR-and-ML-Capabilities/blob/main/ml-integration.png)
           
 ## Purpose
- * Deploy a Global Aurora Postgres Serverless V2 Database Cluster with Disaster Recovery (DR) and In-Database Machine Learning Capabilities
-   Machine Learning Features include:
-   * AWS Comprehend for Sentiment Analysis.
-   * AWS SageMaker Machine with Linear Learner, Random Forest & Xboost algorithms features.
+ * Deploy a Global Aurora Postgres Serverless V2 Database Cluster with Disaster Recovery (DR) and In-Database Machine Learning Capabilities.
+   * Machine learning features include:
+     * AWS Comprehend for Sentiment Analysis.
+     * AWS SageMaker Machine with Linear Learner, Random Forest & Xboost algorithms features.
 
 ## Advantage of Global Cluster
   * The global database ensures Cross-Region Disaster Recovery, hence:
