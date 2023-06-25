@@ -1,6 +1,6 @@
 [![CI - TF Deploy AuoraPgsGlobalSless2](https://github.com/MongoExpUser/Global-DB-Aurora-Postgres-Sless-V2-With-DR-and-ML-Capabilities/actions/workflows/global-aurora-pgs-sless-v2-dr-ml.yml/badge.svg)](https://github.com/MongoExpUser/Global-DB-Aurora-Postgres-Sless-V2-With-DR-and-ML-Capabilities/actions/workflows/global-aurora-pgs-sless-v2-dr-ml.yml)
 
-## Global-DB-Aurora-Postgres-Sless-V2-With-DR-and-ML-Capabilities
+## Global-Aurora-Postgres-Sless-V2-DB-With-DR-and-ML-Capabilities
 
 ## View of Global Database With Disaster Recovery Feature In Secondary Region
 ![Image description](https://github.com/MongoExpUser/Global-DB-Aurora-Postgres-Sless-V2-With-DR-and-ML-Capabilities/blob/main/global-db.png)
