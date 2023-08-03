@@ -58,7 +58,7 @@ cluster_parameter_group_name              = "pgs-cluster-param-grp"
 cluster_parameter_group_family            = "aurora-postgresql15"
 cluster_parameter_group_description       = "Aurora Cluster Parameter Group"
 cluster_apply_method                      = "pending-reboot"
-cluster_timezone                           = "UTC" # or "US/Eastern"  or "US/Central", or "America/Denver", or "US/Pacific", etc.
+cluster_timezone                          = "UTC" # or "US/Eastern"  or "US/Central", or "America/Denver", or "US/Pacific", etc.
 cluster_orafce_timezone                   = "UTC" # or "US/Eastern"  or "US/Central", or "America/Denver", or "US/Pacific", etc.
 
 # 5. db/instance parameter group variables
